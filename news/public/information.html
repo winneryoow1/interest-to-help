@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="GB2312">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <title>新生模块详情</title>
+    <meta name="theme-color" content="#ffffff">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="stylesheets/index.css">
+    <link rel="stylesheet" href="stylesheets/style.css">
+    <link rel="stylesheet" href="stylesheets/s1.css">
+    <link href="https://cdn.bootcss.com/Swiper/4.5.0/css/swiper.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/Swiper/4.5.0/js/swiper.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script>
+	<script src="util/filterLogin.js"></script>
+    <style>
+        body{
+            font-family: "微软雅黑";
+            font-size:15px;
+            background-image: url(images/back.png);
+        }
+        .main {
+            width: 100%;
+        }
+
+        
+        .copyright{
+            min-height: 60px;
+        }
+        .art_content * {
+            margin-bottom: 9px;
+        }
+        .list li{
+            display: inline;
+        }
+        .div-a{ float:left; width:40%; margin-left: 5px;} 
+         .div-b{ float:left; width:40%;} 
+         .div-c{ float:right;margin-right: 5px;} 
+    </style>
+</head>
+
+<body class="ch_news">
+    <div id="v_container">
+        <div class="qq_channel">
+            <div id="TopNav">
+                <div data-reactroot="" class="qq_header">
+                    <div class="qq_navWrap" role="navigation">
+                        <div class="qq_nav">
+                            <div class="nav-list clearfix">
+                                <ul id="main-list" class="main-list fl">
+                                    <li class="item">
+                                        <a href="index.html" target="">首页</a>
+                                    </li>
+                                    <li class="item">
+                                        <a href="found.html" target="">失物招领</a>
+                                    </li>
+                                    <li class="item">
+                                        <a href="#">二手回收</a>
+                                        <i></i>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="qq_content cf slide-wrap">
+                <div class="aLEFT art_content">
+                    <h1 style="text-align: center;">院系基本信息</h1>
+                    <p style="font-size:20px;">【新生查询模块】</p>
+                    <div class="div-a">
+                    <p>一、院系QQ群号</p>
+                    <ul class="list">
+                        <li>
+                            <p>1.计信学院QQ群(12345678)</p>
+                            <p>计算机科学与技术：12345678</p>
+                            <p>计算机科学与技术师范：12345678</p>
+                            <p>网络工程：12345678</p>
+                            <p> 物联网：12345678</p>
+                        </li>
+                    </ul>  
+                        <br>
+                        <br>
+                    <ul class="list">
+                        <li>
+                            <p>2.数学与信息科学学院QQ群(12345678)</p>
+                            <p>数学与应用数学：12345678</p>
+                            <p>信息与计算科学：12345678</p>    
+                            <p>统计学：12345678</p>​                
+                        </li>
+                    </ul>
+                    </div>  
+
+                    <div class="div-b">
+                    <ul class="list">
+                        <br>
+                        <li> 
+                           <p>3.财政金融学院QQ群(12345678)</p>
+                           <p>经济学：12345678</p>
+                           <p>金融学：12345678</p>
+                           <p>财务管理：12345678</p>   
+                           <p>会计学：12345678</p>      
+                        </li>
+                    </ul> 
+                    <br>
+                    <br>
+                    <ul class="list">
+                        <li> 
+                           <p>4.传播学院QQ群(12345678)</p>
+                           <p>新闻学：12345678</p>
+                           <p>广播电视学：12345678</p>
+                           <p>广告学：12345678</p>   
+                           <p>传播学：12345678</p>      
+                        </li>
+                    </ul> 
+                </div>   
+                   
+                <div class="div-c">
+                        <ul class="list">
+                            <li> 
+                               <p>5.财政金融学院QQ群(12345678)</p>
+                               <p>经济学：12345678</p>
+                               <p>金融学：12345678</p>
+                               <p>财务管理：12345678</p>   
+                               <p>会计学：12345678</p>      
+                            </li>
+                        </ul> 
+                        <br>
+                        <br>
+                        <ul class="list">
+                            <li> 
+                               <p>6.传播学院QQ群(12345678)</p>
+                               <p>新闻学：12345678</p>
+                               <p>广播电视学：12345678</p>
+                               <p>广告学：12345678</p>   
+                               <p>传播学：12345678</p>      
+                            </li>
+                        </ul> 
+                    </div>                            
+                </div>
+            </div>
+            <div class="copyright"></div>
+            <!-- <div id="GoTop">
+                <div data-reactroot="" class="fixed-bar">
+                    <a class="item refresh" tabindex="0" @click="refresh">
+                        <i class="icon-refresh"></i>
+                        <span>刷新</span>
+                    </a>
+                    <a class="item" tabindex="0" @click="totop">
+                        <span class="iconfont icon-gotop"></span>
+                    </a>
+                </div>
+            </div> -->
+        </div>
+    </div>
+
+    <script src="libs/vue/vue.min.js"></script>
+    <script src="https://cdn.bootcss.com/layer/2.3/layer.js"></script>
+    <script src="javascripts/style.js"></script>
+    <script>
+        // var vm = new Vue({
+        //     el: '#v_container',
+        //     data: {
+        //         fastTopShow: false
+        //     },
+        //     mounted: function(){
+        //         this.$nextTick(function(){
+
+        //         })
+        //     },
+        //     methods: {
+        //         refresh: function(){
+        //             location.reload()
+        //         },
+        //         totop: function () {
+        //             var self = this
+        //             var set = setInterval(function () {
+        //                 var toTop = document.documentElement.scrollTop || document.body.scrollTop
+        //                 if (toTop <= 0) {
+        //                 clearInterval(set)
+        //                 self.fastTopShow = false
+        //                 }
+        //                 document.documentElement.scrollTop = toTop - 21
+        //             }, 1)
+        //         },
+        //         loadNews: function() {
+
+        //         }
+        //     }
+        // })
+    </script>
+</body>
+
+</html>

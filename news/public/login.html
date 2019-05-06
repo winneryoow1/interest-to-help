@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="GB2312">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <title>登录</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="stylesheets/style.css">
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+    <script src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script>
+	<!-- 引入样式 -->
+	<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+	<!-- 引入组件库 -->
+	<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <style>
+        body {
+            background: #f2f2f2;
+        }
+
+        .login {
+            width: 360px;
+            border: 1px solid #d9edf7;
+            padding: 15px;
+            background: #fff;
+        }
+
+        .login input {
+            margin-bottom: 15px;
+            padding: 0 15px;
+        }
+
+        button {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body class="ch_news" style="background: url(images/login.jpg) no-repeat;
+                          background-size: 100% 100%;background-attachment: fixed;">
+    <div id="v_container">
+        <div class="cf slide-wrap fix-central tc login">
+            <h1>登陆</h1>
+            <input type="text" ref="account" placeholder="账号">
+            <input type="password" ref="pwd" placeholder="密码">
+			身 份：
+			<select id="iden" style="width:277px;height: 38px;">
+				<option value="1">本校</option>
+				<option value="2">新生</option>
+				<option value="3">外校</option>
+			</select><br><br><br>
+            <button type="button" class="btn btn-primary" @click="login">登录</button>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+    <script src="libs/vue/vue.min.js"></script>
+    <script src="https://cdn.bootcss.com/layer/2.3/layer.js"></script>
+	<script src="util/cookieUtil.js"></script>
+    <script>
+        var vm = new Vue({
+            el: '#v_container',
+            data: {
+                fastTopShow: false
+            },
+            mounted: function(){
+                this.$nextTick(function(){
+					
+                })
+            },
+            methods: {
+                login: function(){
+                    var self = this
+                    if (!self.$refs.account.value){
+                        layer.msg('请输入账号')
+                        return
+                    }
+                    if (!self.$refs.pwd.value){
+                        layer.msg('请输入密码')
+                        return
+                    }
+					var sendData = {
+							"username":self.$refs.account.value,
+							"password":self.$refs.pwd.value
+							};
+					$.ajax({ 
+						url: "http://192.168.56.1:8080/jeecg-boot/sys/login",
+						type:"POST",
+						dataType:"text",
+						contentType:"application/json",
+						async:true,
+						data:JSON.stringify(sendData),
+						cache:false,
+						success: function(data){
+							let ret = JSON.parse(data);
+							console.log(data);
+							if(ret.success) {
+								let iden = $('#iden option:selected').val();
+								window.sessionStorage.setItem("iden",iden);
+								layer.msg(ret.message)
+								window.sessionStorage.setItem("username",ret.result.userInfo.username);
+								location.href = 'index.html'
+							} else {
+								layer.msg(ret.message)
+							}
+					    },
+						error: function(){
+							alert('服务器错误')
+						}
+					 });
+                    // 
+                },
+                totop: function () {
+                    var self = this
+                    var set = setInterval(function () {
+                        var toTop = document.documentElement.scrollTop || document.body.scrollTop
+                        if (toTop <= 0) {
+                        clearInterval(set)
+                        self.fastTopShow = false
+                        }
+                        document.documentElement.scrollTop = toTop - 21
+                    }, 1)
+                },
+                loadNews: function() {
+
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

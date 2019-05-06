@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="GB2312">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <title>发布</title>
+    <meta name="theme-color" content="#ffffff">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="stylesheets/index.css">
+    <link rel="stylesheet" href="stylesheets/style.css">
+    <link rel="stylesheet" href="stylesheets/s1.css">
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="https://cdn.bootcss.com/Swiper/4.5.0/css/swiper.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/Swiper/4.5.0/js/swiper.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script>
+	<script src="util/filterLogin.js"></script>
+
+    <style>
+        .qq_header{
+            background: #f2f2f2;
+        }
+        textarea{
+            width: 100%;
+        }
+        .art_content * {
+            margin-bottom: 9px;
+        }
+        .lab div{
+            width: 120px;
+        }
+        .lab button{
+            width: 30%;
+            padding: 10px 15px;
+            border-radius: 5px;
+        }
+		#TopNav{
+			background-color: rgb(50, 58, 69);
+		}
+    </style>
+</head>
+
+<body class="ch_news">
+    <div id="v_container">
+        <div class="qq_channel">
+           <div v-if="isTourist" id="TopNav">
+                   <div  class="qq_navWrap" role="navigation" style="background: #323A45;">
+                       <div class="qq_nav" >
+                           <div class="nav-list clearfix">
+                               <ul id="main-list" class="main-list fl">
+                                   <li class="disabled active">
+                                       <a href="index.html" target="">首页</a>
+                                   </li>
+                                   <li class="item" v-if="swzl">
+                                       <a href="found.html" target="">失物招领</a>
+                                   </li>
+                                   <li class="item" v-if="eshs">
+                                       <a href="recyling.html">二手回收</a>
+                                       <i></i>
+                                   </li>
+           						<li class="item" v-if="xs">
+           						    <a href="https://www.baidu.com">新生模块</a>
+           						    <i></i>
+           						</li>
+                               </ul>
+                           </div>
+                       </div>
+                       <div class="right">
+                           <a class="ei login" href="login.html">登陆</a>
+                       </div>
+                   </div>
+           </div>
+           
+            <div class="qq_content cf slide-wrap">
+                <div class="aLEFT art_content">
+                    <h1>发布信息</h1>
+                    <div class="flex flex-bet lab">
+                        <div>标题</div>
+                        <input type="text">
+                    </div>
+                    <div class="flex flex-bet lab">
+                        <div>图片</div>
+                        <input type="file">
+                    </div>
+                    <div class="flex flex-bet lab">
+                        <div>文章主体内容</div>
+                        <textarea name="" id="" cols="30" rows="10"></textarea>
+                    </div>
+                    <div class="flex flex-bet lab">
+                        <div>地址</div>
+                        <input type="text">
+                    </div>
+                    <div class="flex flex-bet lab">
+                        <div>联系方式</div>
+                        <input type="text">
+                    </div>
+                    <div class="flex flex-bet lab">
+                        <button class="btn btn-type-primary">发布信息</button>
+                        <button>取消</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="libs/vue/vue.min.js"></script>
+    <script src="https://cdn.bootcss.com/layer/2.3/layer.js"></script>
+    <script src="javascripts/style.js"></script>
+    <script>
+		var vm = new Vue({
+		    el: '#v_container',
+		    data: {
+		        swzl:true,
+				eshs:true,
+				xs:false,
+				isTourist:true
+		    },
+		    mounted: function(){
+				let username = window.sessionStorage.getItem("username");
+				if(username === null || username === '' || username === 'undefined'){
+					this.isTourist = false;
+				}
+				let iden = window.sessionStorage.getItem("iden");
+				if(iden === '3'){
+					this.swzl = false;
+					this.eshs = false;
+				}
+				if(iden === '2'){
+					this.xs = true;
+				}
+		        this.$nextTick(function(){
+					
+		        })
+		    }
+		})
+        // var vm = new Vue({
+        //     el: '#v_container',
+        //     data: {
+        //         fastTopShow: false
+        //     },
+        //     mounted: function(){
+        //         this.$nextTick(function(){
+
+        //         })
+        //     },
+        //     methods: {
+        //         refresh: function(){
+        //             location.reload()
+        //         },
+        //         totop: function () {
+        //             var self = this
+        //             var set = setInterval(function () {
+        //                 var toTop = document.documentElement.scrollTop || document.body.scrollTop
+        //                 if (toTop <= 0) {
+        //                 clearInterval(set)
+        //                 self.fastTopShow = false
+        //                 }
+        //                 document.documentElement.scrollTop = toTop - 21
+        //             }, 1)
+        //         },
+        //         loadNews: function() {
+
+        //         }
+        //     }
+        // })
+    </script>
+</body>
+
+</html>

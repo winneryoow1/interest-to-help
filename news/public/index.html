@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="GB2312">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <title>首页</title>
+    <meta name="theme-color" content="#ffffff">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="stylesheets/index.css">
+    <link rel="stylesheet" href="stylesheets/style.css">
+    <link rel="stylesheet" href="stylesheets/s1.css">
+    <link href="https://cdn.bootcss.com/Swiper/4.5.0/css/swiper.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/Swiper/4.5.0/js/swiper.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script>
+	
+	<script src="libs/vue/vue.min.js"></script>
+	<script src="https://cdn.bootcss.com/layer/2.3/layer.js"></script>
+	<script src="javascripts/style.js"></script>
+    <style>
+        .main {
+            width: 100%;
+        }
+
+        .swiper-container {
+            width: 90%;
+            max-width: 1500px;
+            height: 500px;
+            border: 1px solid #efefef;
+            background: #fff;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .swiper-pagination{
+            display: inline-block;
+            width: 260px !important;
+            height: 100%;
+            right: 0;
+            background: rgba(0, 0, 0, .7);
+        }
+        .swiper-pagination span{
+            display: flex;
+            align-items: center;
+            height: 20%;
+        }
+
+        .swiper-slide {
+            text-align: right;
+        }
+
+        .swiper-slide img {
+            width: 100%;
+        }
+
+        .guider-link {
+            width: 280px !important;
+            height: 100%;
+            top: 0;
+            right: 0;
+            background: rgba(0, 0, 0, .7);
+            z-index: 999;
+        }
+
+        .guider-link a {
+            width: 100%;
+            height: 20%;
+            padding: 15px;
+            color: #fff;
+        }
+.qq_nav li a {
+    color: white;
+}
+        .guider-link .guider-active{
+            background: #fff;
+            color: #038288;
+        }
+		
+		.eye_box {
+			float:left;
+    width: 200px;
+    height: 100px;
+    /* position: absolute; */
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+	margin-left: 62px;
+    transition: height .5s ease 0s;
+}
+.eye_box .eye_top {
+    width: 200px;
+    position: relative;
+    border: 2px solid #3f2a22;
+    border-bottom: none;
+    box-sizing: border-box;
+}
+.eye_top .eye_text {
+    font-size: 18px;
+    font-weight: 700;
+    color: #f8b700;
+    background: #211510;
+    text-align: center;
+    height: 50px;
+    line-height: 50px;
+}
+#TopNav{
+	background-color: rgb(50, 58, 69);
+}
+
+    </style>
+</head>
+
+<body class="ch_news" 
+    style="background: url(images/login.jpeg) no-repeat;
+           height:100%;
+           width:100%;
+           overflow:hidden;
+           background-size: cover;"
+    >
+	
+	
+    <div id="v_container">
+		<div v-if="isTourist" id="TopNav">
+		        <div  class="qq_navWrap" role="navigation" style="background: #323A45;">
+		            <div class="qq_nav" >
+		                <div class="nav-list clearfix">
+		                    <ul id="main-list" class="main-list fl">
+		                        <li class="disabled active">
+		                            <a href="#" target="">首页</a>
+		                        </li>
+		                        <li class="item" v-if="swzl">
+		                            <a href="found.html" target="">失物招领</a>
+		                        </li>
+		                        <li class="item" v-if="eshs">
+		                            <a href="recyling.html">二手回收</a>
+		                            <i></i>
+		                        </li>
+								<li class="item" v-if="xs">
+								    <a href="information.html">新生模块</a>
+								    <i></i>
+								</li>
+		                    </ul>
+		                </div>
+		            </div>
+		            <div class="right">
+		                <a class="ei issue" @click="eiissueClick">我要发布</a>
+		                <a class="ei login" href="login.html">登陆</a>
+		            </div>
+		        </div>
+		</div>
+		<!-- 
+		<div class="eye_box"><div class="eye_top"><h3 class="eye_text"><a href="#" target="">首页</a></h3></div></div>
+		<div class="eye_box"><div class="eye_top"><h3 class="eye_text"><a href="found.html" target="">失物招领</a></h3></div></div>
+		<div class="eye_box"><div class="eye_top"><h3 class="eye_text"><a href="#">二手回收</a></h3></div></div>
+		<div class="eye_box"><div class="eye_top"><h3 class="eye_text"><a class="ei issue" @click="eiissueClick" >我要发布</a></h3></div></div>
+		<div class="eye_box"><div class="eye_top"><h3 class="eye_text"><a class="ei login" href="login.html">登陆</a></h3> 
+		<div class="right">
+		            </div></div></div>
+			 -->		
+        <div class="qq_channel">
+            
+            <div class="swiper-container pr">
+                <div class="pa flex flex-d-tb guider-link">
+                    <a class="flex" href="#slide1">1</a>
+                    <a class="flex" href="#slide2">2</a>
+                    <a class="flex" href="#slide3">3</a>
+                    <a class="flex" href="#slide4">4</a>
+                    <a class="flex" href="#slide5">5</a>
+                </div>
+                <div class="swiper-wrapper">
+                    <!-- <div class="swiper-slide" data-hash="slide1">
+                        <img src="images/p1.webp" alt="">
+                    </div> -->
+                    <div class="swiper-slide" data-hash="slide1">
+                        <img src="images/1.jpg" alt="">
+                    </div>
+                    <div class="swiper-slide" data-hash="slide2">
+                        <img src="images/2.jpg" alt="">
+                    </div>
+                    <div class="swiper-slide" data-hash="slide3">
+                        <img src="images/3.jpg" alt="">
+                    </div>
+                    <div class="swiper-slide" data-hash="slide4">
+                        <img src="images/4.jpg" alt="">
+                    </div>
+                    <div class="swiper-slide" data-hash="slide5">
+                        <img src="images/5.jpg" alt="">
+                    </div>
+                </div>
+                <!-- 如果需要分页器 -->
+                <div class="swiper-pagination flex flex-d-tb"></div>
+
+                <!-- 如果需要导航按钮 -->
+                <!-- <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div> -->
+
+                <!-- 如果需要滚动条 -->
+                <!-- <div class="swiper-scrollbar"></div> -->
+            </div>
+			<!-- <div v-if="true" id="TopNav">
+			    <div  data-reactroot="" class="qq_header">
+			        <div  class="qq_navWrap" role="navigation">
+			            <div class="qq_nav" >
+			                <div class="nav-list clearfix">
+			                    <ul id="main-list" class="main-list fl">
+			                        <li class="disabled active">
+			                            <a href="#" target="">首页</a>
+			                        </li>
+			                        <li class="item" v-if="swzl">
+			                            <a href="found.html" target="">失物招领</a>
+			                        </li>
+			                        <li class="item" v-if="eshs">
+			                            <a href="#">二手回收</a>
+			                            <i></i>
+			                        </li>
+									<li class="item" v-if="xs">
+									    <a href="https://www.baidu.com">新生模块</a>
+									    <i></i>
+									</li>
+			                    </ul>
+			                </div>
+			            </div>
+			            <div class="right">
+			                <a class="ei issue">我要发布</a>
+			                <a class="ei login" href="login.html">登陆</a>
+			            </div>
+			        </div>
+			    </div>
+			</div>
+			 -->
+			
+			
+            <div class="qq_content cf slide-wrap" hidden>
+                <!-- <div class="cluster fl">
+                    <div id="Left"></div>
+                </div> -->
+                <div class="main fl">
+                    <div id="List">
+                        <div data-reactroot="" class="channel_mod" data-bosszone="channel_list" data-bossirs="new_list">
+                            <div class="item-list">
+                                <div class="item-list-wrap">
+                                    <a data-v-eab80fd8="" href="//2.taobao.com/item.htm?id=592739246071" target="_blank"
+                                        class="item-wrap">
+                                        <div data-v-eab80fd8="" class="item-img" style="background-image: url(&quot;http://img.alicdn.com/bao/uploaded/i4/O1CN019B7U9H1uS4mHJrOWR_!!0-fleamarket.jpg&quot;);"></div>
+                                        <div data-v-eab80fd8="" class="item-info">
+                                            <p data-v-eab80fd8="" class="item-title">vans真标真标版本 莆田vans真标真标版本代发125包邮 24小时更新物流 实力在线秒dh</p>
+                                            <div data-v-eab80fd8="" class="price-line">
+                                                <div data-v-eab80fd8="" class="price">
+                                                    <p data-v-eab80fd8="" class="price-unit">￥</p>
+                                                    <p data-v-eab80fd8="" class="price-value">19.99</p>
+                                                </div>
+                                                <!---->
+                                            </div>
+                                        </div>
+                                        <div data-v-eab80fd8="" class="user-line">
+                                            <div data-v-eab80fd8="" class="user-info">
+                                                <img data-v-eab80fd8="" src="http://gtms03.alicdn.com/tps/i3/TB1LFGeKVXXXXbCaXXX07tlTXXX-200-200.png"
+                                                    class="usericon">
+                                                <p data-v-eab80fd8="" class="user-name">其***帅</p>
+                                                <img data-v-eab80fd8="" src="http://gw.alicdn.com/mt/TB1796pGL5TBuNjSspmXXaDRVXa-168-24.png"
+                                                    class="user-tag">
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a data-v-eab80fd8="" href="//2.taobao.com/item.htm?id=592357812699" target="_blank"
+                                        class="item-wrap">
+                                        <div data-v-eab80fd8="" class="item-img" style="background-image: url(&quot;http://img.alicdn.com/bao/uploaded/i3/O1CN01IHEkur1tPxKQZzaNV_!!0-fleamarket.jpg&quot;);"></div>
+                                        <div data-v-eab80fd8="" class="item-info">
+                                            <p data-v-eab80fd8="" class="item-title">18寸 本田CRV原装原厂正品铝合金轮毂轮辋钢圈胎铃 正品原厂件，轮毂是全新的，不是拆车件，更不是翻新的，细节如图，支持</p>
+                                            <div data-v-eab80fd8=""
+                                                class="price-line">
+                                                <div data-v-eab80fd8="" class="price">
+                                                    <p data-v-eab80fd8="" class="price-unit">￥</p>
+                                                    <p data-v-eab80fd8="" class="price-value">659</p>
+                                                </div>
+                                                <!---->
+                                            </div>
+                                        </div>
+                                        <div data-v-eab80fd8="" class="user-line">
+                                            <div data-v-eab80fd8="" class="user-info">
+                                                <img data-v-eab80fd8="" src="http://img.alicdn.com/bao/uploaded/i3/O1CN01oAP1Zq2FDyVfJdu0j_!!0-mytaobao.jpg"
+                                                    class="usericon">
+                                                <p data-v-eab80fd8="" class="user-name">z***l</p>
+                                                <img data-v-eab80fd8="" src="http://gw.alicdn.com/mt/TB1HCq9GN1YBuNjy1zcXXbNcXXa-168-24.png"
+                                                    class="user-tag">
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a data-v-eab80fd8="" href="//2.taobao.com/item.htm?id=592357432034" target="_blank"
+                                        class="item-wrap">
+                                        <div data-v-eab80fd8="" class="item-img" style="background-image: url(&quot;http://img.alicdn.com/bao/uploaded/i1/O1CN01RQ7LBU1bJOZTOkOuG_!!0-fleamarket.jpg&quot;);"></div>
+                                        <div data-v-eab80fd8="" class="item-info">
+                                            <p data-v-eab80fd8="" class="item-title">全新正品施华洛世奇蝴蝶锁骨链 280夏日小心机款！江疏影同款！施华洛世奇蝴蝶锁骨链！气质up ！一路飙升，合金材料真空电</p>
+                                            <div data-v-eab80fd8=""
+                                                class="price-line">
+                                                <div data-v-eab80fd8="" class="price">
+                                                    <p data-v-eab80fd8="" class="price-unit">￥</p>
+                                                    <p data-v-eab80fd8="" class="price-value">280</p>
+                                                </div>
+                                                <!---->
+                                            </div>
+                                        </div>
+                                        <div data-v-eab80fd8="" class="user-line">
+                                            <div data-v-eab80fd8="" class="user-info">
+                                                <img data-v-eab80fd8="" src="http://img.alicdn.com/bao/uploaded/i4/O1CN01vXHXaN20Mw1YFCTuE_!!0-fleamarket.jpg"
+                                                    class="usericon">
+                                                <p data-v-eab80fd8="" class="user-name">a***3</p>
+                                                <img data-v-eab80fd8="" src="http://gw.alicdn.com/mt/TB1796pGL5TBuNjSspmXXaDRVXa-168-24.png"
+                                                    class="user-tag">
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a data-v-eab80fd8="" href="//2.taobao.com/item.htm?id=592911711337" target="_blank"
+                                        class="item-wrap">
+                                        <div data-v-eab80fd8="" class="item-img" style="background-image: url(&quot;http://img.alicdn.com/bao/uploaded/i3/O1CN012JGS8y1D6Wf7jAipj_!!0-fleamarket.jpg&quot;);"></div>
+                                        <div data-v-eab80fd8="" class="item-info">
+                                            <p data-v-eab80fd8="" class="item-title">三星无线加速充电板 开封用过一两天 几乎全新 可小刀</p>
+                                            <div data-v-eab80fd8="" class="price-line">
+                                                <div data-v-eab80fd8="" class="price">
+                                                    <p data-v-eab80fd8="" class="price-unit">￥</p>
+                                                    <p data-v-eab80fd8="" class="price-value">140</p>
+                                                </div>
+                                                <p data-v-eab80fd8="" class="want-num">1人想要</p>
+                                            </div>
+                                        </div>
+                                        <div data-v-eab80fd8="" class="user-line">
+                                            <div data-v-eab80fd8="" class="user-info">
+                                                <img data-v-eab80fd8="" src="http://img.alicdn.com/bao/uploaded/i2/O1CN01TMLjv02Gy3wxwHpJq_!!0-mytaobao.jpg"
+                                                    class="usericon">
+                                                <p data-v-eab80fd8="" class="user-name">t***f</p>
+                                                <img data-v-eab80fd8="" src="http://gw.alicdn.com/mt/TB1796pGL5TBuNjSspmXXaDRVXa-168-24.png"
+                                                    class="user-tag">
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a data-v-eab80fd8="" href="//2.taobao.com/item.htm?id=592356172941" target="_blank"
+                                        class="item-wrap">
+                                        <div data-v-eab80fd8="" class="item-img" style="background-image: url(&quot;http://img.alicdn.com/bao/uploaded/i2/O1CN01NRyWbc1NERfVSmqSS_!!0-fleamarket.jpg&quot;);"></div>
+                                        <div data-v-eab80fd8="" class="item-info">
+                                            <p data-v-eab80fd8="" class="item-title">converse匡威条纹刺绣logo短袖 男女款T恤 夏季款 converse匡威条纹刺绣logo短袖 男女款T恤 夏季</p>
+                                            <div data-v-eab80fd8=""
+                                                class="price-line">
+                                                <div data-v-eab80fd8="" class="price">
+                                                    <p data-v-eab80fd8="" class="price-unit">￥</p>
+                                                    <p data-v-eab80fd8="" class="price-value">45</p>
+                                                </div>
+                                                <p data-v-eab80fd8="" class="want-num">1人想要</p>
+                                            </div>
+                                        </div>
+                                        <div data-v-eab80fd8="" class="user-line">
+                                            <div data-v-eab80fd8="" class="user-info">
+                                                <img data-v-eab80fd8="" src="http://img.alicdn.com/bao/uploaded/i1/O1CN013D1iPd23IlGAstxtJ_!!0-fleamarket.jpg"
+                                                    class="usericon">
+                                                <p data-v-eab80fd8="" class="user-name">t***9</p>
+                                                <img data-v-eab80fd8="" src="http://gw.alicdn.com/mt/TB1796pGL5TBuNjSspmXXaDRVXa-168-24.png"
+                                                    class="user-tag">
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a data-v-eab80fd8="" href="//2.taobao.com/item.htm?id=592911147243" target="_blank"
+                                        class="item-wrap">
+                                        <div data-v-eab80fd8="" class="item-img" style="background-image: url(&quot;http://img.alicdn.com/bao/uploaded/i1/O1CN01vOMZxK1amsRxxYoR4_!!0-fleamarket.jpg&quot;);"></div>
+                                        <div data-v-eab80fd8="" class="item-info">
+                                            <p data-v-eab80fd8="" class="item-title">原装正品荣耀心晴智能心率am16耳机黑色 买荣耀10苏宁送的，纯因好奇开盒，可测心率 智能耳机 仅拆盒，盒子扔掉了，还有
+                                            </p>
+                                            <div data-v-eab80fd8="" class="price-line">
+                                                <div data-v-eab80fd8="" class="price">
+                                                    <p data-v-eab80fd8="" class="price-unit">￥</p>
+                                                    <p data-v-eab80fd8="" class="price-value">50</p>
+                                                </div>
+                                                <!---->
+                                            </div>
+                                        </div>
+                                        <div data-v-eab80fd8="" class="user-line">
+                                            <div data-v-eab80fd8="" class="user-info">
+                                                <img data-v-eab80fd8="" src="http://img.alicdn.com/bao/uploaded/i2/1802050001/TB2vaH.iL2H8KJjy0FcXXaDlFXa_!!0-mytaobao.jpg"
+                                                    class="usericon">
+                                                <p data-v-eab80fd8="" class="user-name">a***沫</p>
+                                                <img data-v-eab80fd8="" src="http://gw.alicdn.com/mt/TB1796pGL5TBuNjSspmXXaDRVXa-168-24.png"
+                                                    class="user-tag">
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a data-v-eab80fd8="" href="//2.taobao.com/item.htm?id=592739202360" target="_blank"
+                                        class="item-wrap">
+                                        <div data-v-eab80fd8="" class="item-img" style="background-image: url(&quot;http://img.alicdn.com/bao/uploaded/i2/O1CN015u4e2r1MXqprL9cF0_!!0-fleamarket.jpg&quot;);"></div>
+                                        <div data-v-eab80fd8="" class="item-info">
+                                            <p data-v-eab80fd8="" class="item-title">倩碧无油大黄油 入手渠道:朋友暑假去美国短期留学带回。保真。她买的时候蛮贵29刀多… 转手原因:囤了很多护肤品，发现了更
+                                            </p>
+                                            <div data-v-eab80fd8="" class="price-line">
+                                                <div data-v-eab80fd8="" class="price">
+                                                    <p data-v-eab80fd8="" class="price-unit">￥</p>
+                                                    <p data-v-eab80fd8="" class="price-value">130</p>
+                                                </div>
+                                                <p data-v-eab80fd8="" class="want-num">1人想要</p>
+                                            </div>
+                                        </div>
+                                        <div data-v-eab80fd8="" class="user-line">
+                                            <div data-v-eab80fd8="" class="user-info">
+                                                <img data-v-eab80fd8="" src="http://img.alicdn.com/bao/uploaded/i3/6000000007799/TB2Cjt9aKOSBuNjy0FdXXbDnVXa_!!0-mytaobao.jpg"
+                                                    class="usericon">
+                                                <p data-v-eab80fd8="" class="user-name">s***叫</p>
+                                                <!---->
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a data-v-eab80fd8="" href="//2.taobao.com/item.htm?id=592909487796" target="_blank"
+                                        class="item-wrap">
+                                        <div data-v-eab80fd8="" class="item-img" style="background-image: url(&quot;http://img.alicdn.com/bao/uploaded/i4/O1CN01txXHNh1pQdS92VRyx_!!0-fleamarket.jpg&quot;);"></div>
+                                        <div data-v-eab80fd8="" class="item-info">
+                                            <p data-v-eab80fd8="" class="item-title">zara连衣裙 这是18年的春夏新款 我是在金华的银泰买的！我买的时候刚上新 299！当时朋友怂恿就买了 回来发现我一个</p>
+                                            <div data-v-eab80fd8=""
+                                                class="price-line">
+                                                <div data-v-eab80fd8="" class="price">
+                                                    <p data-v-eab80fd8="" class="price-unit">￥</p>
+                                                    <p data-v-eab80fd8="" class="price-value">150</p>
+                                                </div>
+                                                <!---->
+                                            </div>
+                                        </div>
+                                        <div data-v-eab80fd8="" class="user-line">
+                                            <div data-v-eab80fd8="" class="user-info">
+                                                <img data-v-eab80fd8="" src="http://img.alicdn.com/bao/uploaded/i4/O1CN01HWf8cZ1SyJNUBrXe8_!!0-mytaobao.jpg"
+                                                    class="usericon">
+                                                <p data-v-eab80fd8="" class="user-name">l***9</p>
+                                                <!---->
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a data-v-eab80fd8="" href="//2.taobao.com/item.htm?id=592582145957" target="_blank"
+                                        class="item-wrap">
+                                        <div data-v-eab80fd8="" class="item-img" style="background-image: url(&quot;http://img.alicdn.com/bao/uploaded/i1/O1CN01vlba6Z1w77tMoosXW_!!0-fleamarket.jpg&quot;);"></div>
+                                        <div data-v-eab80fd8="" class="item-info">
+                                            <p data-v-eab80fd8="" class="item-title">雅诗兰黛大表姐色！420！ 用量如图！没啥好说的了！这色号不入对不起自己</p>
+                                            <div data-v-eab80fd8="" class="price-line">
+                                                <div data-v-eab80fd8="" class="price">
+                                                    <p data-v-eab80fd8="" class="price-unit">￥</p>
+                                                    <p data-v-eab80fd8="" class="price-value">99</p>
+                                                </div>
+                                                <!---->
+                                            </div>
+                                        </div>
+                                        <div data-v-eab80fd8="" class="user-line">
+                                            <div data-v-eab80fd8="" class="user-info">
+                                                <img data-v-eab80fd8="" src="http://img.alicdn.com/bao/uploaded/i4/6000000007586/TB2sZR0a7KWBuNjy1zjXXcOypXa_!!0-mytaobao.jpg"
+                                                    class="usericon">
+                                                <p data-v-eab80fd8="" class="user-name">b***5</p>
+                                                <img data-v-eab80fd8="" src="http://gw.alicdn.com/mt/TB1796pGL5TBuNjSspmXXaDRVXa-168-24.png"
+                                                    class="user-tag">
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a data-v-eab80fd8="" href="//2.taobao.com/item.htm?id=592911715484" target="_blank"
+                                        class="item-wrap">
+                                        <div data-v-eab80fd8="" class="item-img" style="background-image: url(&quot;http://img.alicdn.com/bao/uploaded/i1/O1CN01HugoAf1ExU4iDKMfR_!!0-fleamarket.jpg&quot;);"></div>
+                                        <div data-v-eab80fd8="" class="item-info">
+                                            <p data-v-eab80fd8="" class="item-title">兰蔻粉水 也许你不信，但这真的是粉水。可以翻我的售出记录。带瓶子的已经卖了。这个是我之前分装出来给自己用的，然后现在也不</p>
+                                            <div data-v-eab80fd8=""
+                                                class="price-line">
+                                                <div data-v-eab80fd8="" class="price">
+                                                    <p data-v-eab80fd8="" class="price-unit">￥</p>
+                                                    <p data-v-eab80fd8="" class="price-value">50</p>
+                                                </div>
+                                                <!---->
+                                            </div>
+                                        </div>
+                                        <div data-v-eab80fd8="" class="user-line">
+                                            <div data-v-eab80fd8="" class="user-info">
+                                                <img data-v-eab80fd8="" src="http://img.alicdn.com/bao/uploaded/i1/6000000006004/TB2Pbucn3fH8KJjy1zcXXcTzpXa_!!0-fleamarket.jpg"
+                                                    class="usericon">
+                                                <p data-v-eab80fd8="" class="user-name">樱***中</p>
+                                                <img data-v-eab80fd8="" src="http://gw.alicdn.com/mt/TB1HCq9GN1YBuNjy1zcXXbNcXXa-168-24.png"
+                                                    class="user-tag">
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <!---->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+	<!-- <script src="util/filterLogin.js"></script> -->
+	<script>
+		$('#eiissue').click(function(){
+		    layer.confirm('请选择你要发布的类型', {
+		        btn: ['二手回收','失物招领'] //按钮
+		      }, function(){
+		        location.href = 'issue.html'
+		      }, function(){
+		        location.href = 'issue.html'
+		      });
+		})
+		 var vm = new Vue({
+		    el: '#v_container',
+		    data: {
+		        swzl:true,
+				eshs:true,
+				xs:false,
+				isTourist:true
+		    },
+		    mounted: function(){
+				let username = window.sessionStorage.getItem("username");
+				if(username === null || username === '' || username === 'undefined'){
+					this.isTourist = false;
+				}
+				let iden = window.sessionStorage.getItem("iden");
+				if(iden === '3'){
+					this.swzl = false;
+					this.eshs = false;
+				}
+				if(iden === '2'){
+					this.xs = true;
+				}
+		        this.$nextTick(function(){
+					
+		        })
+		    },
+			methods:{
+				eiissueClick(){
+					layer.confirm('请选择你要发布的类型', {
+					    btn: ['二手回收','失物招领'] //按钮
+					  }, function(){
+					    location.href = 'issue.html'
+					  }, function(){
+					    location.href = 'issue.html'
+					  });
+				}
+			}
+		})
+	</script>
+    <script>
+// 		var currUser = window.sessionStorage.getItem("username");
+// 		if(currUser === null || currUser === '' || currUser === 'undefined'){
+// 			location.href = 'login.html'
+// 		}
+        var articles = [
+             '一金一银四铜！在国际健美操大赛的师大健儿！',
+            '师大学子荣获全省高校大学生主题演讲比赛一等奖',
+            '师大2019年度最美校花榜单出炉！',
+            '欧阳娜娜再发声：不管我是香港的台湾的哪里的，我都是中国人',
+            '江西师范大学:大学生国际志愿者海外交流实习项目（美国）招募啦！'
+        ]
+        var mySwiper = new Swiper('.swiper-container', {
+            direction: 'horizontal', // 垂直切换选项
+            autoplay: true,
+            loop: true, // 循环模式选项
+            watchSlidesProgress : true,
+            on: {
+                slideChangeTransitionEnd: function(){
+                    var length = $('.swiper-slide').length - 2
+                    console.log(length)
+                    var idname = 'slide' + this.activeIndex
+                    if (this.activeIndex > length) {
+                        $('#slide1').addClass('guider-active')
+                        $('#slide1').siblings().removeClass('guider-active')
+                    } else if (this.activeIndex === 0) {
+                        $('#slide' + length).addClass('guider-active')
+                        $('#slide' + length).siblings().removeClass('guider-active')
+                    } else {
+                        $('#' + idname).addClass('guider-active')
+                        $('#' + idname).siblings().removeClass('guider-active')
+                    }
+                    console.log(this.activeIndex);//切换结束时，告诉我现在是第几个slide
+                },
+            },
+            // hashNavigation: true,
+
+            // controller: {
+            //     control: [swiper1,swiper2],
+            //     inverse: true,
+            //     by: 'slide',
+            // },
+
+            // 如果需要分页器
+            pagination: {
+                // el: '.swiper-pagination',
+                el: '.guider-link',
+                // clickable: true
+                paginationType : 'custom', // 自定义-分页器样式类型（前提）
+                // 设置自定义分页器的内容
+                renderBullet: function (index, classname) {
+                    // console.log(index)
+                    // console.log(classname)
+                    return '<a id="slide'+ (index + 1) +'" href="article.html" class="' + (index === 0 ? 'flex guider-active' : 'flex') + '" inx="'+ index +'" href="#slide1">'+ (index + 1) + '.' + articles[index] +'</a>'
+                    // return '<span class="' + classname + '"style="color:#fff;line-height:45px;">' + index +'</span>'
+                }
+            },
+
+            // 如果需要前进后退按钮
+            // navigation: {
+            //     nextEl: '.swiper-button-next',
+            //     prevEl: '.swiper-button-prev',
+            // },
+
+            // 如果需要滚动条
+            // scrollbar: {
+            //     el: '.swiper-scrollbar',
+            // },
+        })
+        $('.guider-link').on('click','a',function(){
+            // console.log(this.getAttribute('inx'))
+            $(this).addClass('guider-active')
+            $(this).siblings().removeClass('guider-active')
+            var index = this.getAttribute('inx');
+            mySwiper.slideTo(index, 500, false);//切换到第一个slide，速度为1秒
+        })
+        console.log(mySwiper.progress)
+        mySwiper.progress
+        mySwiper.slides[2].progress;
+        // var vm = new Vue({
+        //     el: '#v_container',
+        //     data: {
+        //         fastTopShow: false
+        //     },
+        //     mounted: function(){
+        //         this.$nextTick(function(){
+
+        //         })
+        //     },
+        //     methods: {
+        //         refresh: function(){
+        //             location.reload()
+        //         },
+        //         totop: function () {
+        //             var self = this
+        //             var set = setInterval(function () {
+        //                 var toTop = document.documentElement.scrollTop || document.body.scrollTop
+        //                 if (toTop <= 0) {
+        //                 clearInterval(set)
+        //                 self.fastTopShow = false
+        //                 }
+        //                 document.documentElement.scrollTop = toTop - 21
+        //             }, 1)
+        //         },
+        //         loadNews: function() {
+
+        //         }
+        //     }
+        // })
+    </script>
+</body>
+
+</html>

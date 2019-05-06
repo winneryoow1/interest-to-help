@@ -1,0 +1,294 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+h1,h2,h3,h4,h5,h6,ul,li,ol,p,textarea{
+  margin: 0;
+  padding: 0;
+}
+ul,li,ol{
+  list-style: none;
+  padding: 0;
+}
+input{
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  /* font-weight: 600; */
+  color: #038288;
+  -webkit-appearance: none;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #dcdfe6;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  /* color: #606266; */
+  color: #038288;
+  display: inline-block;
+  font-size: inherit;
+  height: 40px;
+  line-height: 40px;
+  outline: 0;
+  padding: 0 15px;
+  -webkit-transition: border-color .2s cubic-bezier(.645,.045,.355,1);
+  transition: border-color .2s cubic-bezier(.645,.045,.355,1);
+  width: 100%;
+}
+button{
+  border: none;
+}
+section,blockquote,pre{
+  display: block;
+}
+a {
+  text-decoration: none;
+  color: #b7b7b7;
+}
+img{
+  width: 100%;
+  height: 100%;
+}
+i{
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+}
+
+::-webkit-scrollbar{
+  display: none;
+}
+
+/* footer */
+.footer,footer{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+/* 可复用样式 */
+.ele-none{
+  display: none;
+}
+.pf{
+  position: fixed;
+}
+.pa{
+  position: absolute;
+}
+.pr{
+  position: relative;
+}
+.tc{
+  text-align: center;
+}
+
+.text-flow{
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.line-clamp-2{
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.fix-central{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+
+.flex{
+  display: flex;
+  align-items: center;
+}
+.flex-center{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.flex-bet{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.flex-d-tb{
+  flex-direction: column;
+}
+
+.icon{
+  display: inline-block;
+}
+
+body{
+  /* background: #de2624; */
+}
+
+.yc-in-box{
+  padding: 15px;
+}
+.yc-out-box{
+  width: calc(100% - 30px);
+  margin: 15px;
+  overflow: auto;
+}
+.yc-out-box-max{
+  width: calc(100% - 40px);
+  margin: 20px;
+  overflow: auto;
+}
+
+/* 卡片类 */
+.yc-card{
+  padding: 15px;
+  background: #fff;
+  border-radius: 4px;
+}
+
+/* 右侧悬浮按钮 */
+.tool{
+  position: fixed;
+  width: 45px;
+  top: 20px;
+  float: left;
+  right: 15px;
+  z-index: 9;
+}
+.tool .icon{
+  width: 45px;
+  height: 45px;
+}
+.tool .icon:nth-child(1){
+  width: 35px;
+  height: 35px;
+}
+.tool .icon:nth-child(1) img{
+  
+}
+.tool .icon:nth-child(2){
+  margin-top: 30px;
+}
+.tool .icon:nth-child(3){
+  margin-top: 20px;
+}
+.ani-loop{
+  animation: loop 3.2s linear infinite;
+}
+@keyframes loop{
+  from {
+      transform: rotate(0deg)
+  }
+  to {
+    transform: rotate(360deg)
+  }
+}
+
+.space{
+  height: 8px;
+  width: calc(100% - 20px);
+  margin: 0 10px;
+  background: #c82207;
+}
+
+/* 技术支持 */
+.support {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 80px;
+  font-size: 12px;
+  color: #fff;
+}
+.support .power-by{
+  width: 180px;
+  text-align: center;
+  font-size: 14px;
+}
+.support .icon {
+  width: 14px;
+  height: 15px;
+  margin: 0 3px;
+}
+
+button,.btn{
+  font-size: 14px;
+  padding: 6px  8px;
+  color: #fff;
+  background: #fa584b;
+  display: inline-block;
+  outline: none;
+  text-align: center;
+}
+button[type="round"]{
+  border-radius: 20px;
+}
+.btn-type-none{
+  background: #f9f9f8;
+  border: 1px solid #efefef;
+  color: #424242;
+}
+.btn-type-gold{
+  background: #fee990;
+  border: none;
+  color: #ee5456;
+}
+.btn-type-dislikebtn{
+  background: #fff;
+  color: #000;
+}
+.btn-type-wx-default{
+  background: #09bb07;
+}
+.btn-type-primary{
+  background: #095181;
+}
+
+/* tab栏 */
+.tab{
+  height: 43px;
+  line-height: 43px;
+  width: 33.3%;
+  text-align: center;
+  background: #fff;
+}
+.tab span {
+  height: 43px;
+  font-size: 15px;
+  min-width: 70px;
+  line-height: 43px;
+  display: inline-block;
+  border-bottom: 2px solid #fff;
+}
+.tab .tab-active {
+  color: #09bb07;
+  border-bottom: 2px solid #09bb07;
+}
+
+[v-cloak]{
+  display: none;
+}
+
+.right{
+  float: right;
+}
+.right .ei{
+  display: inline-block;
+  height: 78px;
+  font-size: 18px;
+  padding: 30px 15px;
+}
+.right a{
+  cursor: pointer;
+}
